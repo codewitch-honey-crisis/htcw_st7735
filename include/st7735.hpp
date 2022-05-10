@@ -671,7 +671,7 @@ struct st7735 final {
                     rr = src.point(gfx::point16(x + srcr.x1, y + srcr.y1), &pp);
                     if (rr != gfx::gfx_result::success) return rr;
                     pixel_type p;
-                    rr = gfx::convert_palette_to(src, pp, &p, nullptr);
+                    rr = gfx::convert_palette_from(src, pp, &p, nullptr);
                     if (gfx::gfx_result::success != rr) {
                         return rr;
                     }
@@ -684,7 +684,7 @@ struct st7735 final {
                 }
             }
 
-            rr = this_->batch_commit();
+            rr = this_->commit_batch();
 
             return rr;
         }
